@@ -1,16 +1,17 @@
 from PIL import Image
-from detector import detect_faces
-from align_trans import get_reference_facial_points, warp_and_crop_face
+from .detector import detect_faces
+from .align_trans import get_reference_facial_points, warp_and_crop_face
 import numpy as np
 import os
 from tqdm import tqdm
 import argparse
 
+__cwd__ = os.path.dirname(os.path.abspath(__file__))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = "face alignment")
-    parser.add_argument("-source_root", "--source_root", help = "specify your source dir", default = "./data/test", type = str)
-    parser.add_argument("-dest_root", "--dest_root", help = "specify your destination dir", default = "./data/test_Aligned", type = str)
+    parser.add_argument("-source_root", "--source_root", help = "specify your source dir", default = 'D:\WORKSPACE\PYCHARMWORKSPACE\detect_face\data\other_my_face\my', type = str)
+    parser.add_argument("-dest_root", "--dest_root", help = "specify your destination dir", default = 'D:\WORKSPACE\PYCHARMWORKSPACE\detect_face\data\other_my_face\others', type = str)
     parser.add_argument("-crop_size", "--crop_size", help = "specify size of aligned faces, align and crop with padding", default = 112, type = int)
     args = parser.parse_args()
 
